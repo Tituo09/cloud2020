@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author fuqm
@@ -74,6 +75,18 @@ public class PaymentController {
     @GetMapping(value = "/payment/lb")
     public String getPaymentLB()
     {
+        return serverPort;
+    }
+
+    /**
+     *
+     * 模拟超时
+     * @return
+     */
+    @GetMapping("/get/payment/timeout")
+    public String getTimeoutPort() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+
         return serverPort;
     }
 
